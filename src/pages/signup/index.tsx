@@ -2,7 +2,7 @@ import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { postSignup } from '@/api/auth';
-import AuthForm from '@/components/form';
+import AuthForm from '@/components/auth/Form';
 import { PATH } from '@/constants/path';
 import useCredentials from '@/hooks/useCredentials';
 
