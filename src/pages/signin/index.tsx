@@ -25,7 +25,7 @@ const SigninPage = () => {
 
   return (
     <AuthForm
-      title="회원가입"
+      title="로그인"
       email={credentials.email}
       password={credentials.password}
       handleInput={handleCredentials}

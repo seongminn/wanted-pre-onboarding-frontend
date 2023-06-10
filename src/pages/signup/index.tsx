@@ -20,7 +20,7 @@ const SignupPage = () => {
 
   return (
     <AuthForm
-      title="로그인"
+      title="회원가입"
       email={credentials.email}
       password={credentials.password}
       handleInput={handleCredentials}
