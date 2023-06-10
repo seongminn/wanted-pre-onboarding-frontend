@@ -1,14 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
+$success: rgb(0, 201, 107);
+$error: rgb(255, 88, 88);
+$primary: #eb7e52;
+
+$gray: #868686;
+$lightgray: #d3d3d3;
+$background-gray: rgb(245, 245, 247);
+
+$shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 * {
+  margin: 0;
+  padding: 0;
+
   box-sizing: border-box;
+  font-family: 'Noto Sans KR';
 }
 
 body {
   margin: 0;
   padding: 0;
-
-  font-family: 'Noto Sans KR';
 }
 
 a {
@@ -27,4 +39,8 @@ li {
 
 button {
   cursor: pointer;
+}
+
+input {
+  outline: none;
 }
