@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { postSignup } from '@/api/auth';
 import AuthForm from '@/components/auth/Form';
 import { PATH } from '@/constants/path';
-import useCredentials from '@/hooks/useCredentials';
+import useCredentials from '@/hooks/useInput';
+import { CredentialType, credentialValue } from '@/types/auth';
 
 const SignupPage = () => {
-  const { credentials, handleCredentials } = useCredentials();
+  const { value: credentials, handleValue: handleCredentials } =
+    useCredentials<CredentialType>(credentialValue);
   const navigate = useNavigate();
 
   const handleSignup = (e: FormEvent<HTMLFormElement>) => {
