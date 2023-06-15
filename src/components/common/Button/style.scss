@@ -1,0 +1,31 @@
+@import '@/index.scss';
+
+.custom-button {
+  padding: 5px 10px;
+  margin: 10px 0;
+
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: $primary;
+
+  &.small {
+    font-size: 14px;
+  }
+
+  &.medium {
+    font-size: 16px;
+  }
+
+  &.large {
+    font-size: 18px;
+  }
+
+  &.left {
+    border-left: 1px solid $lightgray;
+  }
+
+  &.right {
+    border-left: 1px solid $lightgray;
+  }
+}
