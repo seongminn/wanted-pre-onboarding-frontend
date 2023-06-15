@@ -15,8 +15,14 @@ const TodoItemInfo = (props: TodoItemInfoProps) => {
   return (
     <>
       {isEdit ? (
-        // eslint-disable-next-line jsx-a11y/no-autofocus
-        <input autoFocus id="todo" defaultValue={content} onChange={handleValue} />
+        <input
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
+          id="todo"
+          defaultValue={content}
+          onChange={handleValue}
+          data-testid="modify-input"
+        />
       ) : (
         <span className={`todo-list__item-name ${isCompleted ? 'isCompleted' : ''}`}>
           {content}

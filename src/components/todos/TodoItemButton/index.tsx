@@ -45,10 +45,13 @@ TodoItemButton.isEdit = function TodoConsole(props: IsNotEditProps) {
 
   return (
     <div>
-      <Button onClick={() => handleUpdateTodo(id, { todo: modifiedTodo, isCompleted }, true)}>
+      <Button
+        onClick={() => handleUpdateTodo(id, { todo: modifiedTodo, isCompleted }, true)}
+        data-testid="submit-button"
+      >
         제출
       </Button>
-      <Button color="default" border="right" onClick={toggleEdit}>
+      <Button color="default" border="right" onClick={toggleEdit} data-testid="cancel-button">
         취소
       </Button>
     </div>
