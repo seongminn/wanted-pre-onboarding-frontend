@@ -9,8 +9,8 @@ const Header = () => {
     <header className="header">
       <div className="profile">
         <img src="profile.webp" alt="profile" className="profile-image" />
-        <h3>SEONGMINN</h3>
-        <span className="profile-desc">FRONT-END DEVELOPER</span>
+        <h3>PRE-ONBOARDING</h3>
+        <span className="profile-desc">frontend intership</span>
       </div>
 
       <nav className="navbar">

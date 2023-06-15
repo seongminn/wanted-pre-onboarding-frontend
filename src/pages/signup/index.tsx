@@ -21,14 +21,16 @@ const SignupPage = () => {
   };
 
   return (
-    <AuthForm
-      title="회원가입"
-      email={credentials.email}
-      password={credentials.password}
-      handleInput={handleCredentials}
-      onSubmit={handleSignup}
-      testId="signup-button"
-    />
+    <section className="inner-wrapper">
+      <AuthForm
+        title="회원가입"
+        email={credentials.email}
+        password={credentials.password}
+        handleInput={handleCredentials}
+        onSubmit={handleSignup}
+        testId="signup-button"
+      />
+    </section>
   );
 };
 

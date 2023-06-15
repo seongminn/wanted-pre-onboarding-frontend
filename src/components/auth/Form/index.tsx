@@ -2,6 +2,7 @@ import './style.scss';
 
 import { ChangeEvent, FormEvent } from 'react';
 
+import Button from '@/components/common/Button';
 import { AUTH_MESSAGE } from '@/constants/validation';
 import { AuthValidator } from '@/utils/validator';
 
@@ -21,7 +22,7 @@ const AuthForm = (props: AuthFormProps) => {
 
   return (
     <form onSubmit={onSubmit} className="form">
-      <h2 className="title">{title}</h2>
+      <h1 className="title">{title}</h1>
       <label htmlFor="email" className="form-label">
         이메일
       </label>
@@ -54,13 +55,9 @@ const AuthForm = (props: AuthFormProps) => {
         {!isValidatePassword ? AUTH_MESSAGE.PASSWORD_ERROR : AUTH_MESSAGE.PASSWORD_SUCCESS}
       </p>
 
-      <button
-        className="form-button"
-        data-testid={testId}
-        disabled={!isValidateEmail || !isValidatePassword}
-      >
+      <Button size="medium" data-testid={testId} disabled={!isValidateEmail || !isValidatePassword}>
         제출
-      </button>
+      </Button>
     </form>
   );
 };

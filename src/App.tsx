@@ -1,7 +1,7 @@
 import './App.scss';
 
-import Header from './components/common/Header';
-import Router from './Router';
+import Header from '@/components/common/Header';
+import Router from '@/Router';
 
 function App() {
   return (

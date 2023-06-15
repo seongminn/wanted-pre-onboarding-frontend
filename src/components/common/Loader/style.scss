@@ -1,5 +1,12 @@
 @import '@/index.scss';
 
+.spinner-wrapper {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+}
+
 .spinner {
   width: 50px;
   margin: auto auto;

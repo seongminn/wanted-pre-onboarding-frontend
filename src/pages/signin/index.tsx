@@ -29,14 +29,16 @@ const SigninPage = () => {
   };
 
   return (
-    <AuthForm
-      title="로그인"
-      email={credentials.email}
-      password={credentials.password}
-      handleInput={handleCredentials}
-      onSubmit={handleSignin}
-      testId="signin-button"
-    />
+    <section className="inner-wrapper">
+      <AuthForm
+        title="로그인"
+        email={credentials.email}
+        password={credentials.password}
+        handleInput={handleCredentials}
+        onSubmit={handleSignin}
+        testId="signin-button"
+      />
+    </section>
   );
 };
 
