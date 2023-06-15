@@ -62,7 +62,12 @@ const TodoItem = (props: TodoItemProps) => {
           className="todo-list__checkbox"
           onChange={() => handleUpdateTodo(id, { todo, isCompleted: !isCompleted })}
         />
-        <TodoInfo isEdit={isEdit} content={todo} handleValue={handleValue} />
+        <TodoInfo
+          isEdit={isEdit}
+          content={todo}
+          isCompleted={isCompleted}
+          handleValue={handleValue}
+        />
       </label>
 
       {isEdit ? (

@@ -5,11 +5,12 @@ import { ChangeEvent } from 'react';
 interface TodoInfoProps {
   isEdit: boolean;
   content: string;
+  isCompleted: boolean;
   handleValue: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TodoInfo = (props: TodoInfoProps) => {
-  const { isEdit, content: content, handleValue } = props;
+  const { isEdit, content, isCompleted, handleValue } = props;
 
   return (
     <>
@@ -17,7 +18,9 @@ const TodoInfo = (props: TodoInfoProps) => {
         // eslint-disable-next-line jsx-a11y/no-autofocus
         <input autoFocus id="todo" defaultValue={content} onChange={handleValue} />
       ) : (
-        <span className="todo-list__item-name">{content}</span>
+        <span className={`todo-list__item-name ${isCompleted ? 'isCompleted' : ''}`}>
+          {content}
+        </span>
       )}
     </>
   );

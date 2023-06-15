@@ -19,17 +19,9 @@
 
 .todo-list__item-name {
   width: 100%;
-}
 
-.console-button__left {
-  border: none;
-  color: $success;
-}
-
-.console-button__cancel {
-  color: $gray;
-}
-
-.console-button__delete {
-  color: $error;
+  &.isCompleted {
+    color: $gray;
+    text-decoration: line-through;
+  }
 }
