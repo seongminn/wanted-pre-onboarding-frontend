@@ -1,4 +1,4 @@
-import './style.scss';
+import '../style.scss';
 
 import { Dispatch, SetStateAction, useState } from 'react';
 
@@ -6,8 +6,8 @@ import { deleteTodo, updateTodo } from '@/api/todos';
 import useInput from '@/hooks/useInput';
 import { Todo, UpdateTodoRequest } from '@/types/todo';
 
-import TodoConsole from './TodoConsole';
-import TodoInfo from './TodoInfo';
+import TodoItemButton from '../TodoItemButton';
+import TodoInfo from '../TodoItemInfo';
 
 interface TodoItemProps {
   id: number;
@@ -71,7 +71,7 @@ const TodoItem = (props: TodoItemProps) => {
       </label>
 
       {isEdit ? (
-        <TodoConsole.isEdit
+        <TodoItemButton.isEdit
           id={id}
           toggleEdit={toggleEdit}
           modifiedTodo={value.todo}
@@ -79,7 +79,7 @@ const TodoItem = (props: TodoItemProps) => {
           handleUpdateTodo={handleUpdateTodo}
         />
       ) : (
-        <TodoConsole id={id} toggleEdit={toggleEdit} handleDeleteTodo={handleDeleteTodo} />
+        <TodoItemButton id={id} toggleEdit={toggleEdit} handleDeleteTodo={handleDeleteTodo} />
       )}
     </li>
   );

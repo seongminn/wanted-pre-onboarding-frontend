@@ -2,14 +2,14 @@ import '../style.scss';
 
 import { ChangeEvent } from 'react';
 
-interface TodoInfoProps {
+interface TodoItemInfoProps {
   isEdit: boolean;
   content: string;
   isCompleted: boolean;
   handleValue: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TodoInfo = (props: TodoInfoProps) => {
+const TodoItemInfo = (props: TodoItemInfoProps) => {
   const { isEdit, content, isCompleted, handleValue } = props;
 
   return (
@@ -26,4 +26,4 @@ const TodoInfo = (props: TodoInfoProps) => {
   );
 };
 
-export default TodoInfo;
+export default TodoItemInfo;

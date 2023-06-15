@@ -3,22 +3,22 @@ import '../style.scss';
 import Button from '@/components/common/Button';
 import { UpdateTodoRequest } from '@/types/todo';
 
-interface TodoConsoleProps {
+interface TodoItemButtonProps {
   id: number;
   toggleEdit: () => void;
 }
 
-interface IsNotEditProps extends TodoConsoleProps {
+interface IsNotEditProps extends TodoItemButtonProps {
   modifiedTodo: string;
   isCompleted: boolean;
   handleUpdateTodo: (id: number, body: UpdateTodoRequest, toggle?: boolean) => void;
 }
 
-interface IsEditProps extends TodoConsoleProps {
+interface IsEditProps extends TodoItemButtonProps {
   handleDeleteTodo: (id: number) => void;
 }
 
-const TodoConsole = (props: IsEditProps) => {
+const TodoItemButton = (props: IsEditProps) => {
   const { id, handleDeleteTodo, toggleEdit } = props;
 
   return (
@@ -38,9 +38,9 @@ const TodoConsole = (props: IsEditProps) => {
   );
 };
 
-export default TodoConsole;
+export default TodoItemButton;
 
-TodoConsole.isEdit = function TodoConsole(props: IsNotEditProps) {
+TodoItemButton.isEdit = function TodoConsole(props: IsNotEditProps) {
   const { id, modifiedTodo, isCompleted, toggleEdit, handleUpdateTodo } = props;
 
   return (
