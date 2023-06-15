@@ -1,0 +1,20 @@
+@import '@/index.scss';
+
+.create-form {
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 50px;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  border: 1px solid $primary;
+  border-radius: 5px;
+}
+
+.create-form__input {
+  width: 100%;
+  padding: 10px 10px;
+
+  border: none;
+}

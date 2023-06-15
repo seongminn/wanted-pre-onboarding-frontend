@@ -1,0 +1,35 @@
+@import '@/index.scss';
+
+.todo-list__item {
+  width: 100%;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 1px solid transparent;
+
+  // border-bottom: 1px solid lightgray;
+}
+
+.todo-list__checkbox {
+  margin-right: 5px;
+}
+
+.todo-list__item-name {
+  width: 100%;
+}
+
+.console-button__left {
+  border: none;
+  color: $success;
+}
+
+.console-button__cancel {
+  color: $gray;
+}
+
+.console-button__delete {
+  color: $error;
+}
