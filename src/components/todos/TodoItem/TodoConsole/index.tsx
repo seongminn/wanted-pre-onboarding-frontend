@@ -26,7 +26,12 @@ const TodoConsole = (props: IsEditProps) => {
       <Button onClick={toggleEdit} data-testid="modify-button">
         수정
       </Button>
-      <Button border="right" onClick={() => handleDeleteTodo(id)} data-testid="delete-button">
+      <Button
+        color="error"
+        border="right"
+        onClick={() => handleDeleteTodo(id)}
+        data-testid="delete-button"
+      >
         삭제
       </Button>
     </div>
@@ -43,7 +48,7 @@ TodoConsole.isEdit = function TodoConsole(props: IsNotEditProps) {
       <Button onClick={() => handleUpdateTodo(id, { todo: modifiedTodo, isCompleted }, true)}>
         제출
       </Button>
-      <Button border="right" onClick={toggleEdit}>
+      <Button color="default" border="right" onClick={toggleEdit}>
         취소
       </Button>
     </div>

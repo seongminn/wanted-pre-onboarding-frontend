@@ -7,7 +7,15 @@
   outline: none;
   border: none;
   background-color: transparent;
-  color: $primary;
+  color: $gray;
+
+  &.primary {
+    color: $primary;
+  }
+
+  &.error {
+    color: $error;
+  }
 
   &.small {
     font-size: 14px;
