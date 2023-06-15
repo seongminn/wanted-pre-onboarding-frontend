@@ -7,7 +7,7 @@ import useInput from '@/hooks/useInput';
 import { Todo, UpdateTodoRequest } from '@/types/todo';
 
 import TodoItemButton from '../TodoItemButton';
-import TodoInfo from '../TodoItemInfo';
+import TodoItemInfo from '../TodoItemInfo';
 
 interface TodoItemProps {
   id: number;
@@ -62,7 +62,7 @@ const TodoItem = (props: TodoItemProps) => {
           className="todo-list__checkbox"
           onChange={() => handleUpdateTodo(id, { todo, isCompleted: !isCompleted })}
         />
-        <TodoInfo
+        <TodoItemInfo
           isEdit={isEdit}
           content={todo}
           isCompleted={isCompleted}
