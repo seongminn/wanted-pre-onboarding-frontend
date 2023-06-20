@@ -1,5 +1,3 @@
-import './style.scss';
-
 import { HTMLAttributes } from 'react';
 
 import Icons, { IconNames } from './Icons';
