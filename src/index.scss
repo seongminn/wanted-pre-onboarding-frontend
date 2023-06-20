@@ -2,7 +2,11 @@
 
 $success: rgb(0, 201, 107);
 $error: rgb(255, 88, 88);
-$primary: #eb7e52;
+$primary: #fc7574;
+$second: #ffcccc;
+
+$black: #222222;
+$white: #ffffff;
 
 $gray: #868686;
 $lightgray: #d3d3d3;
@@ -13,6 +17,8 @@ $shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 * {
   margin: 0;
   padding: 0;
+
+  color: $black;
 
   box-sizing: border-box;
   font-family: 'Noto Sans KR';
