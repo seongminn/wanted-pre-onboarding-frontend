@@ -3,8 +3,10 @@ import '../style.scss';
 import { Dispatch, SetStateAction, useState } from 'react';
 
 import { deleteTodo, updateTodo } from '@/api/todos';
+import { SUCCESS_MESSAGE } from '@/constants/message';
 import useInput from '@/hooks/useInput';
-import { Todo, UpdateTodoRequest } from '@/types/todo';
+import useToast from '@/hooks/useToast';
+import { Todo, TodoResponse, UpdateTodoRequest } from '@/types/todo';
 
 import TodoItemButton from '../TodoItemButton';
 import TodoItemInfo from '../TodoItemInfo';
@@ -22,31 +24,38 @@ const TodoItem = (props: TodoItemProps) => {
 
   const [isEdit, setIsEdit] = useState(false);
   const { value, handleValue } = useInput<{ todo: string }>({ todo });
+  const { openToast } = useToast();
+
+  const updateTodosState = (prevTodos: TodoResponse[], data: TodoResponse, id: number) => {
+    const processed = prevTodos.map((todo) => (todo.id === id ? { ...todo, ...data } : todo));
+
+    return processed;
+  };
 
   const handleUpdateTodo = (id: number, body: UpdateTodoRequest, toggle = false) => {
     updateTodo(id, { ...body })
       .then(({ data }) => {
-        setTodos((prevTodos) => {
-          const processed = prevTodos.map((todo) => (todo.id === id ? { ...todo, ...data } : todo));
-
-          return processed;
-        });
+        setTodos((prevTodos) => updateTodosState(prevTodos, data, id));
+        openToast(SUCCESS_MESSAGE.update, 'success');
       })
-      .catch(console.error);
+      .catch((err) => openToast(err.response.data.message[0], 'error'));
 
     if (toggle) toggleEdit();
+  };
+
+  const deleteTodosState = (prevTodos: TodoResponse[], id: number) => {
+    const processed = prevTodos.filter((todo) => todo.id !== id);
+
+    return processed;
   };
 
   const handleDeleteTodo = (id: number) => {
     deleteTodo(id)
       .then(() => {
-        setTodos((prevTodos) => {
-          const processed = prevTodos.filter((todo) => todo.id !== id);
-
-          return processed;
-        });
+        setTodos((prevTodos) => deleteTodosState(prevTodos, id));
+        openToast(SUCCESS_MESSAGE.delete, 'error');
       })
-      .catch(console.error);
+      .catch((err) => openToast(err.response.data.message, 'error'));
   };
 
   const toggleEdit = () => {

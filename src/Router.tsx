@@ -6,6 +6,8 @@ import { TOKEN_KEY } from '@/constants/auth';
 import { PATH } from '@/constants/path';
 import { getToken } from '@/utils/token';
 
+import ToastProvider from './components/common/Toast';
+
 const NotFoundPage = lazy(() => import('@/pages/404'));
 const HomePage = lazy(() => import('@/pages/home'));
 const SigninPage = lazy(() => import('@/pages/signin'));
@@ -14,19 +16,21 @@ const TodoPage = lazy(() => import('@/pages/todo'));
 
 function Router() {
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path={PATH.MAIN} element={<HomePage />} />
-        <Route element={<PrivateRouter />}>
-          <Route path={PATH.TODO} element={<TodoPage />} />
-        </Route>
-        <Route element={<PublicRouter />}>
-          <Route path={PATH.SIGNIN} element={<SigninPage />} />
-          <Route path={PATH.SIGNUP} element={<SignupPage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <ToastProvider>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path={PATH.MAIN} element={<HomePage />} />
+          <Route element={<PrivateRouter />}>
+            <Route path={PATH.TODO} element={<TodoPage />} />
+          </Route>
+          <Route element={<PublicRouter />}>
+            <Route path={PATH.SIGNIN} element={<SigninPage />} />
+            <Route path={PATH.SIGNUP} element={<SignupPage />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </ToastProvider>
   );
 }
 

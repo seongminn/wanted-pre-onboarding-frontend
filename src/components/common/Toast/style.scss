@@ -1,0 +1,41 @@
+@import '@/index.scss';
+
+.toast {
+  position: fixed;
+  left: 100%;
+  top: 5%;
+
+  padding: 15px 20px;
+  min-width: 300px;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  text-align: left;
+
+  background-color: $second;
+  box-shadow: $shadow;
+
+  animation: open 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes open {
+  0% {
+    // left: 100%;
+    transform: translateX(0);
+  }
+  50% {
+    // left: 50%;
+    transform: translateX(-120%);
+  }
+  75% {
+    // left: 50%;
+    transform: translateX(-120%);
+  }
+  100% {
+    // left: 100%;
+    transform: translateX(0);
+  }
+}

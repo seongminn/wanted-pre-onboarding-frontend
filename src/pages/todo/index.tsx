@@ -6,12 +6,16 @@ import { createTodo, getTodos } from '@/api/todos';
 import Footer from '@/components/common/Footer';
 import TodoCreator from '@/components/todos/TodoCreator';
 import TodoItem from '@/components/todos/TodoItem';
+import { SUCCESS_MESSAGE } from '@/constants/message';
 import useInput from '@/hooks/useInput';
+import useToast from '@/hooks/useToast';
 import { Todo } from '@/types/todo';
 
 const TodoPage = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const { value, handleValue, resetValue } = useInput<{ todo: string }>({ todo: '' });
+
+  const { openToast } = useToast();
 
   const handleGetTodo = () => {
     getTodos().then((res) => setTodos(res.data));
@@ -24,8 +28,11 @@ const TodoPage = () => {
       .then(({ data }) => {
         setTodos((prevTodos) => [...prevTodos, data]);
         resetValue();
+        openToast(SUCCESS_MESSAGE.create, 'success');
       })
-      .catch(console.error);
+      .catch((err) => {
+        openToast(err.response.data.message[0], 'error');
+      });
   };
 
   useEffect(() => {
