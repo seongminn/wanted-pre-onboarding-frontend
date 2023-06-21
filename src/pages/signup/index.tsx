@@ -15,15 +15,19 @@ const SignupPage = () => {
   const navigate = useNavigate();
   const { openToast } = useToast();
 
-  const handleSignup = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSignup = () => {
     postSignup(credentials)
       .then(() => {
         openToast(SUCCESS_MESSAGE.signup, 'success');
         navigate(PATH.SIGNIN);
       })
       .catch(() => openToast(ERROR_MESSAGE.signup, 'error'));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    handleSignup();
   };
 
   return (
@@ -33,7 +37,7 @@ const SignupPage = () => {
         email={credentials.email}
         password={credentials.password}
         handleInput={handleCredentials}
-        onSubmit={handleSignup}
+        onSubmit={onSubmit}
         testId="signup-button"
       />
     </section>

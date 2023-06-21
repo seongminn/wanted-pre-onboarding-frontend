@@ -6,7 +6,8 @@ import { deleteTodo, updateTodo } from '@/api/todos';
 import { SUCCESS_MESSAGE } from '@/constants/message';
 import useInput from '@/hooks/useInput';
 import useToast from '@/hooks/useToast';
-import { Todo, TodoResponse, UpdateTodoRequest } from '@/types/todo';
+import { Todo, UpdateTodoRequest } from '@/types/todo';
+import { TodoHandler } from '@/utils/handler';
 
 import TodoItemButton from '../TodoItemButton';
 import TodoItemInfo from '../TodoItemInfo';
@@ -26,16 +27,10 @@ const TodoItem = (props: TodoItemProps) => {
   const { value, handleValue } = useInput<{ todo: string }>({ todo });
   const { openToast } = useToast();
 
-  const updateTodosState = (prevTodos: TodoResponse[], data: TodoResponse, id: number) => {
-    const processed = prevTodos.map((todo) => (todo.id === id ? { ...todo, ...data } : todo));
-
-    return processed;
-  };
-
   const handleUpdateTodo = (id: number, body: UpdateTodoRequest, toggle = false) => {
     updateTodo(id, { ...body })
       .then(({ data }) => {
-        setTodos((prevTodos) => updateTodosState(prevTodos, data, id));
+        setTodos((prevTodos) => TodoHandler('UPDATE', prevTodos, data));
         openToast(SUCCESS_MESSAGE.update, 'success');
       })
       .catch((err) => openToast(err.response.data.message[0], 'error'));
@@ -43,16 +38,10 @@ const TodoItem = (props: TodoItemProps) => {
     if (toggle) toggleEdit();
   };
 
-  const deleteTodosState = (prevTodos: TodoResponse[], id: number) => {
-    const processed = prevTodos.filter((todo) => todo.id !== id);
-
-    return processed;
-  };
-
   const handleDeleteTodo = (id: number) => {
     deleteTodo(id)
       .then(() => {
-        setTodos((prevTodos) => deleteTodosState(prevTodos, id));
+        setTodos((prevTodos) => TodoHandler('DELETE', prevTodos, props));
         openToast(SUCCESS_MESSAGE.delete, 'error');
       })
       .catch((err) => openToast(err.response.data.message, 'error'));

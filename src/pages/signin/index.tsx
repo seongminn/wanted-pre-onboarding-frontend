@@ -18,19 +18,22 @@ const SigninPage = () => {
   const navigate = useNavigate();
   const { openToast } = useToast();
 
-  const handleSignin = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSignin = () => {
     postSignin(credentials)
       .then(({ data }) => {
         setToken(TOKEN_KEY, data.access_token);
         instance.defaults.headers['Authorization'] = `Bearer ${data.access_token}`;
 
         openToast(SUCCESS_MESSAGE.signin, 'success');
-
         navigate(PATH.TODO, { replace: true });
       })
       .catch(() => openToast(ERROR_MESSAGE.signin, 'error'));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    handleSignin();
   };
 
   return (
@@ -40,7 +43,7 @@ const SigninPage = () => {
         email={credentials.email}
         password={credentials.password}
         handleInput={handleCredentials}
-        onSubmit={handleSignin}
+        onSubmit={onSubmit}
         testId="signin-button"
       />
     </section>

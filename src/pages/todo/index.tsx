@@ -10,6 +10,7 @@ import { SUCCESS_MESSAGE } from '@/constants/message';
 import useInput from '@/hooks/useInput';
 import useToast from '@/hooks/useToast';
 import { Todo } from '@/types/todo';
+import { TodoHandler } from '@/utils/handler';
 
 const TodoPage = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -21,18 +22,20 @@ const TodoPage = () => {
     getTodos().then((res) => setTodos(res.data));
   };
 
-  const handleCreateTodo = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleCreateTodo = () => {
     createTodo({ todo: value.todo })
       .then(({ data }) => {
-        setTodos((prevTodos) => [...prevTodos, data]);
+        setTodos((prevTodos) => TodoHandler('CREATE', prevTodos, data));
         resetValue();
         openToast(SUCCESS_MESSAGE.create, 'success');
       })
-      .catch((err) => {
-        openToast(err.response.data.message[0], 'error');
-      });
+      .catch((err) => openToast(err.response.data.message[0], 'error'));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    handleCreateTodo();
   };
 
   useEffect(() => {
@@ -43,7 +46,7 @@ const TodoPage = () => {
     <section className="todo-wrapper">
       <h2 className="title">투두리스트</h2>
 
-      <TodoCreator todo={value.todo} handleTodo={handleValue} handleSubmit={handleCreateTodo} />
+      <TodoCreator todo={value.todo} handleTodo={handleValue} handleSubmit={onSubmit} />
 
       <ul className="todo-list">
         {todos.map((state) => (
