@@ -80,3 +80,30 @@
     - [x] 제출버튼에는 `data-testid="submit-button"` 속성을 부여
     - [x] 취소버튼에는 `data-testid="cancel-button"` 속성을 부여해주세요
   - [x] 제출 버튼 클릭 시 수정된 내용을 업데이트하고, 취소버튼 클릭 시 수정한 내용 초기화 및 수정모드 탈출
+
+---
+
+**리다이렉트**
+파일 경로: src/Router.tsx
+
+PrivateRouter / PublicRouter 컴포넌트를 생성하여, token 검사를 한 뒤 적절한 path로 리다이렉팅
+이 때, react-router-dom/Navigate 컴포넌트의 replace 옵션을 이용하여 history stack이 쌓이지 않도록 하였음
+
+**auth page**
+![image](https://github.com/seongminn/wanted-pre-onboarding-frontend/assets/88662637/8808a8f6-7c56-4b6e-867d-5c97d8be6b1f)
+
+기본적으로 signin page와 signup 페이지는 구성이 동일함(호출하는 api만 다름)
+따라서 Form 컴포넌트를 만들고 변경이 필요한 내용만 props로 전달받아서 렌더링 하도록 하였음
+
+이 때, AuthValidator라는 유틸 함수를 생성하여 이메일 혹은 비밀번호가 유효성 검사를 통과하였는지 boolean값을 전달
+
+**Toast Message**
+Context Api를 통해 전역적으로 공유하는 토스트 메세지를 생성
+이를 통해 유저가 발생시키는 이벤트에 반응하도록 하였음
+
+**Token**
+토큰을 관리하는 유틸함수를 생성하여 로그인 시 간편하게 쿠키를 설정해줄 수 있음
+
+**Todo State**
+todos, setTodos를 이곳저곳으로 뿌려줘야 했기 때문에 props drilling이 발생한다고 생각하여 useReducer를 사용하려 했지만 값이 원하는 대로 편하지 않았고, 시간이 부족하여 그대로 제출했음
+해당 부분에 대해 아쉬움이 남아 팀원들과 이야기해보고 싶었음!
