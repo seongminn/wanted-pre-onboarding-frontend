@@ -21,6 +21,8 @@
 PrivateRouter / PublicRouter 컴포넌트를 생성하여, token 검사를 한 뒤 적절한 path로 리다이렉팅
 이 때, react-router-dom/Navigate 컴포넌트의 replace 옵션을 이용하여 history stack이 쌓이지 않도록 하였음
 
+--
+
 **auth page**
 
 ![image](https://github.com/seongminn/wanted-pre-onboarding-frontend/assets/88662637/8808a8f6-7c56-4b6e-867d-5c97d8be6b1f)
@@ -30,12 +32,16 @@ PrivateRouter / PublicRouter 컴포넌트를 생성하여, token 검사를 한 �
 
 이 때, AuthValidator라는 유틸 함수를 생성하여 이메일 혹은 비밀번호가 유효성 검사를 통과하였는지 boolean값을 전달
 
+--
+
 **Toast Message**
 
 ![image](https://github.com/seongminn/wanted-pre-onboarding-frontend/assets/88662637/4dbbe0a3-69b7-4205-a722-a3908edc8a6a)
 
 Context Api를 통해 전역적으로 공유하는 토스트 메세지를 생성
 이를 통해 유저가 발생시키는 이벤트에 반응하도록 하였음
+
+--
 
 **Token**
 
@@ -44,9 +50,13 @@ Context Api를 통해 전역적으로 공유하는 토스트 메세지를 생성
 
 토큰을 관리하는 유틸함수를 생성하여 로그인 시 간편하게 쿠키를 설정해줄 수 있음
 
+--
+
 **constants**
 
 변하지 않는 값은(ex. 에러 메세지, route 경로, input validator 내용 등) `constants` 디렉토리에서 별도로 관리
+
+--
 
 **Lazy Loading**
 
@@ -54,12 +64,15 @@ Context Api를 통해 전역적으로 공유하는 토스트 메세지를 생성
 
 React18 버전에 추가된 Suspense와 Lazy Loading을 도입하여 UX를 개선하려는 노력
 
+--
+
 **ESLint 적극 활용**
 
 ![image](https://github.com/seongminn/wanted-pre-onboarding-frontend/assets/88662637/0afb42a6-a2a5-4574-b0ee-4c999db2509c)
 
 컨벤션을 결정하는 것은 협업 시 아주 중요하다고 생각하여 ESLint를 통해 다양한 옵션을 설정했음
 
+--
 
 **Todo State**
 
